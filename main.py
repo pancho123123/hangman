@@ -24,23 +24,23 @@ while not end_of_game:
 	# Check if the letter the user guessed (guess) 
 	# is one of the letters in choosen_word
 
-
-	for position in range(word_lenght):
-		letter = choosen_word[position]
-		if letter == guess:
-			display[position] = letter
-	print(display)
 	if lives > 0:
-		if guess not in choosen_word:
-			lives -= 1
-			print(stages[lives])
-			print("The choosen letter is not in the word")
-			print(f"lives left: {lives}")
-	else:
-		end_of_game = True
-		print("You lose")
+		for position in range(word_lenght):
+			letter = choosen_word[position]
+			if letter == guess:
+				display[position] = letter
+		print(display)
 	
-
+	if guess not in choosen_word:
+		lives -= 1
+		print(stages[lives])
+		print("The choosen letter is not in the word")
+		print(f"lives left: {lives}")
+		if lives == 0:
+			end_of_game = True
+			print("You lose")
+			print(f"La palabra era: {choosen_word}")
+	
 	if "_" not in display:
 		end_of_game = True
 		print("You win")
